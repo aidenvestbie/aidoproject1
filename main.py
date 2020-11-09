@@ -27,14 +27,14 @@ def search(file_list):
     each of those lists contains files that have the same content
     """
     lol = []
-    n = 0
+    num = 0
     while 0<len(file_list):
         h = file_list.pop(0)
         lol.append([h])
-        n += 1
+        num += 1
         for i in file_list:
             if compare(h, i):
-                lol[n - 1].append(i)
+                lol[num - 1].append(i)
             else:
                 break
 
@@ -51,17 +51,17 @@ def faster_search(file_list):
     Therefore, let's optimize and try to call it a little less often.
     """
     lol = []
-     = 0
+    num = 0
 
     while 0 < len(file_list):
         h = file_list.pop(0)
         lol.append([h])
-        n += 1
+        num += 1
         for i in file_list:
             if getsize(h) == getsize(i):
 
                 if compare(h,i):
-                    lol[n-1].append(i)
+                    lol[num-1].append(i)
             else:
                 break
 
@@ -87,10 +87,10 @@ def report(lol):
         if getsize(i[0]) * (len(i)-1) > variable[1]:
             variable = (i , getsize(i[0]) * (len(i)-1))
 
-    harry = [i for i in variable[0]]
+    max_file = [i for i in variable[0]]
 
-    print(f'\nThe most disc space({variable[1]}) could be recovered, by deleting copies of this file: \n{harry[0]} \n Here are its {(len(harry)-1)} copies:')
-    print(*harry[1: len(harry)], sep = '\n')
+    print(f'\nThe most disc space({variable[1]}) could be recovered, by deleting copies of this file: \n{max_file[0]} \n Here are its {(len(max_file)-1)} copies:')
+    print(*max_file[1: len(max_file)], sep = '\n')
 
 
 
